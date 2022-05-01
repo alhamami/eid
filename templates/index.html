@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<!-- === Coding by CodingLab | www.codinglabweb.com === -->
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- ===== Link Swiper's CSS ===== -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css"/>
+
+    <!-- ===== Fontawesome CDN Link ===== -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"/>
+    
+    <!-- ===== CSS ===== -->
+    <link rel="stylesheet" href="/static/css/style.css">
+    <link rel="stylesheet" href="/static/css/style2.css">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
+    
+    <title>Card with Sliding Feature</title>
+</head>
+<body style="background: url(/static/img/back.png);">
+
+<style>
+
+.card::before{
+  content: "";
+  position: absolute;
+  height: 40%;
+  width: 100%;
+  background: url(/static/img/card.png);
+  background-size: cover;
+  border-radius: 20px 20px 0 0;
+}
+
+</style>
+<table>
+
+
+  <tr style="height: 560px;">
+    <td>
+
+
+      <section id="send" style="height: 70px;">
+        <div class="profile">
+
+
+          <div id="hireBtn" class="button">
+              <i class="bx bxs-envelope"></i>
+              <button style="width: 130px;"><h3>إنشاء تهنئة</h3></button>
+          </div>
+      </div>
+
+      <!-- popup box start -->
+      <div class="popup-outer">
+          <div class="popup-box">
+              <i id="close" class="bx bx-x close"></i>
+              <div class="profile-text">
+                  <img src="/static/img/profile.png" alt=""> 
+                  <div class="text">
+                    <center>
+                      <div style="font-weight: bold; font-size: large;" class="name">كل عام وأنت بخير</div>
+                      <div style="font-weight: bold; font-size: medium;" class="profession">شارك من تحب فرحة العيد</div>
+                    </center>
+                  </div>
+              </div>
+              <form action="http://localhost:5000/" method = "POST" enctype="multipart/form-data">
+                  <input required name="name" style="text-align: right; font-weight: bold;" type="text" placeholder="ماهو اسمك؟">
+                  
+                  <select required name="country">
+                    <option selected>السعودية</option>
+                    <option>الإمارات</option>
+                    <option>اليمن</option>
+                    <option>قطر</option>
+                    <option>عُمان</option>
+                    <option>البحرين</option>
+                    <option>الكويت</option>
+                    <option>الأردن</option>
+                    <option>سوريا</option>
+                    <option>مصر</option>
+                    <option>العراق</option>
+                    <option>فلسطين</option>
+                    <option>السودان</option>
+                    <option>تونس</option>
+                    <option>ليبيا</option>
+                    <option>المغرب</option>
+                    <option>موريتانيا</option>
+                    <option>لبنان</option>
+                    <option>الصومال</option>
+                   </select>
+
+                   <input   type="file" id="img" name="img" accept="image/*">
+                  
+                   <textarea maxlength="270" required name="comment" spellcheck="false" placeholder="ماذا تود أن تقول لأحبابك؟"></textarea>
+                  
+                  <div class="button">
+                      <button style="width:90px; height: 40px; font-size: 17px; font-weight: bold;" id="close" class="cancel">إلغاء</button>
+                      <button style="width:90px; height: 40px; font-size: 17px; font-weight: bold;" class="send">إرسال</button>
+                  </div>
+              </form>
+          </div>
+      </div>
+
+
+      </section>
+
+
+    </td>
+  </tr>
+
+
+  <tr>
+    <td style="width: 100%;">
+
+    <section style="height: 500px; position: relative; width: 1100px; margin-top: -60px;">
+      
+      <div class="swiper mySwiper container">
+        <div class="swiper-wrapper content">
+
+
+          
+          {% for name, message, country, image in info %}
+          {% set file_name = "img/"+country+".svg" %}
+
+          <div class="swiper-slide card">
+            <div class="card-content">
+              <div class="image">
+                <img src="{{ image }}" alt="">
+              </div>
+
+
+              <div class="name-profession">
+                <table width="100%">
+              
+                  <tr>
+                    <td align ="right">
+                      
+                      <img style=" height: 17px;" 
+                      src="{{ url_for('static', filename=file_name) }}">
+                    
+                    </td>
+                    <td  align ="left">
+                  
+                      <h3><pre>  {{ name }}</pre></h3>
+
+                    </td>
+                  </tr>
+
+                </table>
+             
+                <div style="text-align: center; font-weight: bold; height: 15px; width:400px; word-wrap: break-word;">
+                  {{ message }} </div>
+
+              </div>
+            </div>
+          </div>
+
+          {% endfor %}
+
+
+
+      
+            </div>
+          </div>
+
+      <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-pagination"></div>
+
+
+    </section>
+
+    </td>
+  </tr>
+
+</table>
+
+  <!-- Swiper JS -->
+  <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 2,
+      spaceBetween: 30,
+      slidesPerGroup: 1,
+      loop: true,
+      loopFillGroupWithBlank: true,
+      autoplay: {
+        delay: 2500,
+        disableOnInteraction: false,
+      },
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+
+
+
+ 
+    
+  </script>
+
+
+
+  <script>
+    const section = document.querySelector("#send"),
+  hireBtn = section.querySelector("#hireBtn"),
+  closeBtn = section.querySelectorAll("#close"),
+  textArea = section.querySelector("textarea");
+
+  hireBtn.addEventListener("click" , () =>{
+    section.classList.add("show");
+  });
+
+  closeBtn.forEach(cBtn => {
+    cBtn.addEventListener("click" , ()=>{
+        section.classList.remove("show");
+        textArea.value = "";
+    });
+  });
+  </script>
+
+</body>
+</html>
