@@ -16,7 +16,7 @@ from sqlalchemy import func
 db = SQLAlchemy()
 ''''''
 
-database_path = 'postgresql://postgres:123123@localhost:5432/eid'
+database_path = 'postgresql://postgres:SqzswPqlyMHAzfy0bQFZ@containers-us-west-48.railway.app:5975/railway'
 
 '''
 setup_db(app)
