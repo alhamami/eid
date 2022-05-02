@@ -110,8 +110,8 @@ def displayFiveMostcountries():
     print(qry)
 
 
-if __name__ == '__main__':
-    check = registerUser("oooor" , "eeeee" , "qqqqqqq","")
+#if __name__ == '__main__':
+    #check = registerUser("oooor" , "eeeee" , "qqqqqqq","")
     #print(check)
     #displayLastFive()
 
