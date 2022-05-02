@@ -63,7 +63,7 @@
                     </center>
                   </div>
               </div>
-              <form action="http://localhost:5000/" method = "POST" enctype="multipart/form-data">
+              <form action="{{url_for('index')}}" method = "POST" enctype="multipart/form-data">
                   <input required name="name" style="text-align: right; font-weight: bold;" type="text" placeholder="ماهو اسمك؟">
                   
                   <select required name="country">
