@@ -1,7 +1,6 @@
 
 import os
 from flask import Flask, render_template, request
-from regex import P
 from database import setup_db
 import database as db
 from flask_cors import CORS
