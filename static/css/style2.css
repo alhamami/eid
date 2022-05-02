@@ -78,7 +78,7 @@ section .profile .profile-img{
 }
 
 section .popup-outer{
-    position: relative;
+    position: absolute;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,7 +105,7 @@ section .popup-box{
     border-radius: 12px;
 }
 .popup-box .close{
-    position: relative;
+    position: absolute;
     top: 16px;
     right: 16px;
     font-size: 24px;
