@@ -64,7 +64,7 @@ section .card .image img{
 }
 
 .card .media-icons{
-  position: relative;
+  position: absolute;
   top: 10px;
   right: 20px;
   display: flex;
@@ -142,7 +142,7 @@ section .card .image img{
 }
 
 .swiper-pagination{
-  position: relative;
+  position: absolute;
 }
 
 .swiper-pagination-bullet{
@@ -160,6 +160,4 @@ section .card .image img{
 .swiper-button-next:hover, .swiper-button-prev:hover{
   opacity: 1;
   color: #b67eff;
-  transition: all 0.3s ease;
-
 }
