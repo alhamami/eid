@@ -64,7 +64,7 @@ section .card .image img{
 }
 
 .card .media-icons{
-  position: absolute;
+  position: relative;
   top: 10px;
   right: 20px;
   display: flex;
@@ -142,7 +142,7 @@ section .card .image img{
 }
 
 .swiper-pagination{
-  position: absolute;
+  position: relative;
 }
 
 .swiper-pagination-bullet{
